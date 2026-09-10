@@ -1,0 +1,18 @@
+
+{
+  "$schema": "https://railpack.com/schema.json",
+  "packages": {
+    "php": "8.5",
+    "node": "22"
+  },
+  "php": {
+    "extensions": [
+      "gd",
+      "pdo_mysql",
+      "mbstring",
+      "xml",
+      "curl",
+      "zip"
+    ]
+  }
+}
