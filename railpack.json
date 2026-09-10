@@ -1,18 +1,24 @@
-
 {
   "$schema": "https://railpack.com/schema.json",
+  "providers": ["php", "node"],
+
   "packages": {
     "php": "8.5",
     "node": "22"
   },
-  "php": {
-    "extensions": [
-      "gd",
-      "pdo_mysql",
-      "mbstring",
-      "xml",
-      "curl",
-      "zip"
+
+  "build": {
+    "commands": [
+      "composer install --no-dev --optimize-autoloader --no-interaction",
+      "npm ci",
+      "npm run build",
+      "php artisan config:cache",
+      "php artisan route:cache",
+      "php artisan view:cache"
     ]
+  },
+
+  "deploy": {
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
   }
 }
