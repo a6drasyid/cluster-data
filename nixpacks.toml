@@ -1,9 +1,12 @@
+[variables]
+NIXPACKS_PHP_VERSION = "8.5"
+
 [phases.setup]
-nixPkgs = ["php85", "nodejs_22", "composer"]
+nixPkgs = ["php85", "nodejs_22"]
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
+  "composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-gd",
   "npm ci"
 ]
 
